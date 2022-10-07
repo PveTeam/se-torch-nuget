@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>SpaceEngineersDedicated.ReferenceAssemblies</id>
+        <version>1.0.1</version>
+        <title>Space Engineers Dedicated Reference Assemblies</title>
+        <authors>zznty</authors>
+        <owners>KSH</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <dependencies>
+            <group targetFramework=".NETFramework4.8" />
+        </dependencies>
+    </metadata>
+</package>

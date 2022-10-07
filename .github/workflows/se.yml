@@ -1,0 +1,40 @@
+name: Se Dedicated Package
+
+on:
+  workflow_dispatch:
+    version:
+      description: 'Game version string'
+      required: true
+      type: string
+
+permissions:
+  packages: write
+
+jobs:
+  Main:
+    name: Build Nuget Package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+      - name: Download Depot tool
+        run: wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.4.7/depotdownloader-2.4.7.zip -o tool.zip && 7z x tool.zip -o./tool && rm tool.zip
+      - name: Download Steam Dlls
+        run: dotnet DepotDownloader.dll -app 298740 -depot 298741 -os windows -dir . -filelist dedi_dlls_list.txt
+      - name: Install Nuget CLI
+        run: sudo apt-get install -y nuget
+      - name: Prepare folder structure
+        run: mkdir -p ./nuget/lib/net48
+      - name: Copy binaries
+        run: cp ./DedicatedServer64/*.dll ./nuget/lib/net48
+      - name: Create Nuget Package
+        run: nuget pack specs/SpaceEngineersDedicated.ReferenceAssemblies.nuspec -BasePath ./nuget -Version ${{ inputs.version }}  -NonInteractive -NoPackageAnalysis -OutputFileNamesWithoutVersion
+      - name: Push Nuget Package
+        uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+        with:
+          nupkg-path: './SpaceEngineersDedicated.ReferenceAssemblies.nupkg'
+          repo-owner: ${{ github.repository_owner }}
+          gh-user: ${{ github.actor }}
+          token: ${{ secrets.GITHUB_TOKEN }}
