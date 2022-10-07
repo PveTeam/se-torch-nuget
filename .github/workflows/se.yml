@@ -27,7 +27,7 @@ jobs:
       - name: Prepare folder structure
         run: mkdir -p ./nuget/lib/net48
       - name: Copy binaries
-        run: cp ./DedicatedServer64/*.dll ./nuget/lib/net48
+        run: cp ./DedicatedServer64/* ./nuget/lib/net48
       - name: Create Nuget Package
         run: nuget pack specs/SpaceEngineersDedicated.ReferenceAssemblies.nuspec -BasePath ./nuget -Version ${{ inputs.version }}  -NonInteractive -NoPackageAnalysis -OutputFileNamesWithoutVersion
       - name: Push Nuget Package

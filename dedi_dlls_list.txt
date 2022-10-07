@@ -20,3 +20,15 @@ DedicatedServer64/VRage.Render.dll
 DedicatedServer64/VRage.Render11.dll
 DedicatedServer64/VRage.Scripting.dll
 DedicatedServer64/VRage.UserInterface.dll
+DedicatedServer64/Sandbox.Common.xml
+DedicatedServer64/Sandbox.Game.xml
+DedicatedServer64/SpaceEngineers.Game.xml
+DedicatedServer64/SpaceEngineers.ObjectBuilders.xml
+DedicatedServer64/VRage.xml
+DedicatedServer64/VRage.Game.xml
+DedicatedServer64/VRage.Input.xml
+DedicatedServer64/VRage.Library.xml
+DedicatedServer64/VRage.Math.xml
+DedicatedServer64/VRage.Render.xml
+DedicatedServer64/VRage.Render11.xml
+DedicatedServer64/VRage.Scripting.xml
