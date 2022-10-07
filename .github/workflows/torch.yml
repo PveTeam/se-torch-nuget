@@ -1,0 +1,32 @@
+name: Torch Server Package
+
+on:
+  workflow_dispatch:
+
+permissions:
+  packages: write
+
+jobs:
+  Main:
+    name: Build Nuget Package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+      - name: Download Dlls
+        run: mkdir torch && wget --content-disposition --trust-server-names -i torch_dlls_list.txt -P torch/
+      - name: Fix Torch.Server extension
+        run: mv torch/Torch.Server.exe torch/Torch.Server.dll
+      - name: Prepare folder structure
+        run: mkdir -p ./nuget/lib/net48
+      - name: Copy binaries
+        run: cp ./torch/* ./nuget/lib/net48
+      - name: Get Torch version
+        id: torch_version
+        run: echo "::set-output name=version::1.3.1.$(wget -qO- https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/buildNumber)-master"
+      - name: Create Nuget Package
+        run: nuget pack specs/Torch.Server.ReferenceAssemblies.nuspec -BasePath ./nuget -Version ${{ inputs.version }}  -NonInteractive -NoPackageAnalysis -OutputFileNamesWithoutVersion
+      - name: Push Nuget Package
+        run: dotnet nuget push ./Torch.Server.ReferenceAssemblies.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
