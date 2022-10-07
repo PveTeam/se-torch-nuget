@@ -1,7 +1,0 @@
-﻿
-https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.API.dll
-https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.dll
-https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.Server.exe
-https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.API.xml
-https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.xml
-https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.Server.xml

@@ -16,7 +16,7 @@ jobs:
         with:
           dotnet-version: '6.0.x'
       - name: Download Dlls
-        run: mkdir torch && wget --content-disposition --trust-server-names -i torch_dlls_list.txt -P torch/
+        run: mkdir torch && wget --content-disposition --trust-server-names -P torch/ https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.API.dll  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.dll  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.Server.exe  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.API.xml  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.xml  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.Server.xml
       - name: Fix Torch.Server extension
         run: mv torch/Torch.Server.exe torch/Torch.Server.dll
       - name: Prepare folder structure
@@ -27,6 +27,6 @@ jobs:
         id: torch_version
         run: echo "::set-output name=version::1.3.1.$(wget -qO- https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/buildNumber)-master"
       - name: Create Nuget Package
-        run: nuget pack specs/Torch.Server.ReferenceAssemblies.nuspec -BasePath ./nuget -Version ${{ inputs.version }}  -NonInteractive -NoPackageAnalysis -OutputFileNamesWithoutVersion
+        run: nuget pack specs/Torch.Server.ReferenceAssemblies.nuspec -BasePath ./nuget -Version ${{ steps.torch_version.outputs.version }}  -NonInteractive -NoPackageAnalysis -OutputFileNamesWithoutVersion
       - name: Push Nuget Package
         run: dotnet nuget push ./Torch.Server.ReferenceAssemblies.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
