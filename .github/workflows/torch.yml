@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '7.0.x'
       - name: Download Dlls
         run: mkdir torch && wget --content-disposition --trust-server-names -P torch/ https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.API.dll  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.dll  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.Server.exe  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.API.xml  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.xml  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.Server.xml
       - name: Fix Torch.Server extension
