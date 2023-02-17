@@ -16,7 +16,7 @@ jobs:
         with:
           dotnet-version: '7.0.x'
       - name: Download Dlls
-        run: mkdir torch && wget --content-disposition --trust-server-names -P torch/ https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Debug/Torch.API.dll  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Debug/Torch.dll  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Debug/Torch.Server.exe  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Debug/Torch.API.xml  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Debug/Torch.xml  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Debug/Torch.Server.xml
+        run: mkdir torch && wget --content-disposition --trust-server-names -P torch/ https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Debug/Torch.API.dll  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Debug/Torch.dll  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Debug/Torch.Server.exe
       - name: Fix Torch.Server extension
         run: mv torch/Torch.Server.exe torch/Torch.Server.dll
       - name: Prepare folder structure
