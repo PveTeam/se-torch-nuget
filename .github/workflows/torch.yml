@@ -16,7 +16,7 @@ jobs:
         with:
           dotnet-version: '7.0.x'
       - name: Download Dlls
-        run: mkdir torch && wget --content-disposition --trust-server-names -P torch/ https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.API.dll  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.dll  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.Server.exe  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.API.xml  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.xml  https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.Server.xml
+        run: mkdir torch && wget --content-disposition --trust-server-names -P torch/ https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.API.dll  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.dll  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.Server.exe  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.API.xml  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.xml  https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/artifact/bin/x64/Release/Torch.Server.xml
       - name: Fix Torch.Server extension
         run: mv torch/Torch.Server.exe torch/Torch.Server.dll
       - name: Prepare folder structure
@@ -25,7 +25,7 @@ jobs:
         run: cp ./torch/* ./nuget/lib/net48
       - name: Get Torch version
         id: torch_version
-        run: echo "::set-output name=version::1.3.1.$(wget -qO- https://build.torchapi.com/job/Torch/job/master/lastSuccessfulBuild/buildNumber)-master"
+        run: echo "::set-output name=version::1.3.1.$(wget -qO- https://build.torchapi.com/job/Torch/job/publicbeta/lastSuccessfulBuild/buildNumber)-publicbeta"
       - name: Create Nuget Package
         run: nuget pack specs/Torch.Server.ReferenceAssemblies.nuspec -BasePath ./nuget -Version ${{ steps.torch_version.outputs.version }}  -NonInteractive -NoPackageAnalysis -OutputFileNamesWithoutVersion
       - name: Push Nuget Package
