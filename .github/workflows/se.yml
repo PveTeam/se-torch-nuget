@@ -7,10 +7,6 @@ on:
         description: 'Game version string'
         required: true
         type: string
-      manifestId:
-        description: 'Manifest id from https://steamdb.info/app/298740/depots/?branch=public'
-        required: true
-        type: string
 
 permissions:
   packages: write
@@ -25,14 +21,23 @@ jobs:
         with:
           dotnet-version: '7.0.x'
       - name: Download Depot tool
-        run: wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.4.7/depotdownloader-2.4.7.zip -O tool.zip && 7z x tool.zip -o./tool && rm tool.zip
+        run: wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.5.0/depotdownloader-2.5.0.zip -O tool.zip && 7z x tool.zip -o./tool && rm tool.zip
       - name: Download Steam Dlls
-        run: dotnet ./tool/DepotDownloader.dll -app 298740 -depot 298741 -os windows -dir . -filelist dedi_dlls_list.txt -manifest ${{ inputs.manifestId }}
+        run: dotnet ./tool/DepotDownloader.dll -app 298740 -depot 298741 -os windows -dir . -filelist dedi_dlls_list.txt
       - name: Prepare folder structure
         run: mkdir -p ./nuget/lib/net48
       - name: Copy binaries
         run: cp ./DedicatedServer64/* ./nuget/lib/net48
       - name: Create Nuget Package
         run: nuget pack specs/SpaceEngineersDedicated.ReferenceAssemblies.nuspec -BasePath ./nuget -Version ${{ inputs.version }}  -NonInteractive -NoPackageAnalysis -OutputFileNamesWithoutVersion
+      - name: Install Sleet
+        run: dotnet tool install -g sleet
       - name: Push Nuget Package
-        run: dotnet nuget push ./SpaceEngineersDedicated.ReferenceAssemblies.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
+        env:
+          SLEET_FEED_TYPE: s3
+          SLEET_FEED_PATH: https://nuget.storage.yandexcloud.net
+          SLEET_FEED_BUCKETNAME: nuget
+          SLEET_FEED_SERVICEURL: https://storage.yandexcloud.net
+          SLEET_FEED_ACCESSKEYID: ${{ secrets.S3_KEY_ID }}
+          SLEET_FEED_SECRETACCESSKEY: ${{ secrets.S3_KEY }}
+        run: sleet push ./SpaceEngineersDedicated.ReferenceAssemblies.nupkg
