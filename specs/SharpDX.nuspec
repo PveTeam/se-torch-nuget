@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>SharpDX</id>
+        <version>4.2.0-keen-cringe</version>
+        <title>SharpDX</title>
+        <authors>Alexandre Mutel</authors>
+        <owners>Alexandre Mutel</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Because keen are retarded and building non-signed dlls</description>
+        <repository type="git" url="https://github.com/PveTeam/se-torch-nuget" />
+        <dependencies>
+            <group targetFramework=".NETFramework4.8" />
+        </dependencies>
+    </metadata>
+</package>

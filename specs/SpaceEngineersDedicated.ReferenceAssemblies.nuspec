@@ -12,6 +12,7 @@
         <dependencies>
             <group targetFramework=".NETFramework4.8">
                 <dependency id="protobuf-net" version="1.0.0" />
+                <dependency id="SharpDX" version="4.2.0-keen-cringe" />
             </group>
         </dependencies>
     </metadata>

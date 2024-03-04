@@ -3,9 +3,6 @@ name: Torch Server Package
 on:
   workflow_dispatch:
 
-permissions:
-  packages: write
-
 jobs:
   Main:
     name: Build Nuget Package

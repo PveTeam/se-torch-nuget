@@ -1,0 +1,16 @@
+DedicatedServer64/SharpDX.D3DCompiler.dll
+DedicatedServer64/SharpDX.Desktop.dll
+DedicatedServer64/SharpDX.Direct3D11.dll
+DedicatedServer64/SharpDX.DirectInput.dll
+DedicatedServer64/SharpDX.dll
+DedicatedServer64/SharpDX.DXGI.dll
+DedicatedServer64/SharpDX.XAudio2.dll
+DedicatedServer64/SharpDX.XInput.dll
+DedicatedServer64/SharpDX.D3DCompiler.xml
+DedicatedServer64/SharpDX.Desktop.xml
+DedicatedServer64/SharpDX.Direct3D11.xml
+DedicatedServer64/SharpDX.DirectInput.xml
+DedicatedServer64/SharpDX.xml
+DedicatedServer64/SharpDX.DXGI.xml
+DedicatedServer64/SharpDX.XAudio2.xml
+DedicatedServer64/SharpDX.XInput.xml
