@@ -26,7 +26,7 @@ jobs:
       - name: Create Nuget Package
         run: nuget pack specs/Torch.Server.ReferenceAssemblies.nuspec -BasePath ./nuget -Version ${{ steps.torch_version.outputs.version }}  -NonInteractive -NoPackageAnalysis -OutputFileNamesWithoutVersion
       - name: Install Sleet
-        run: dotnet tool install -g sleet
+        run: dotnet tool install -g sleet --version 5.1.3
       - name: Push Nuget Package
         env:
           SLEET_FEED_TYPE: s3
