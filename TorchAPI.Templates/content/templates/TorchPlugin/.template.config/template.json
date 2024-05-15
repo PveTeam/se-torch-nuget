@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "zznty",
+  "classifications": [ "TorchAPI", "Plugin" ],
+  "identity": "TorchAPI.PluginTemplate",
+  "name": "Torch: plugin project",
+  "shortName": "torchplugin",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "defaultName": "TorchPlugin",
+  "sourceName": "$projectName$",
+  "postActions": [],
+  "symbols": {
+    "pluginguid":{
+      "type": "generated",
+      "generator": "guid",
+      "displayName": "New Plugin GUID",
+      "replaces": "c1b7d3cc-16bb-4bb7-81b3-7a1dfc29f0bd"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<PluginManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Name>$projectName$</Name>
+    <Guid>c1b7d3cc-16bb-4bb7-81b3-7a1dfc29f0bd</Guid>
+    <Version>v1.0.0</Version>
+</PluginManifest>
