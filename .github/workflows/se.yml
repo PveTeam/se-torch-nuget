@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '8.0.x'
       - name: Download Depot tool
         run: wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.7.3/DepotDownloader-framework.zip -O tool.zip && 7z x tool.zip -o./tool && rm tool.zip
       - name: Download Steam Dlls
