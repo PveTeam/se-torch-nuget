@@ -11,7 +11,7 @@ on:
 jobs:
   Main:
     name: Build Nuget Package
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-dotnet@v3
